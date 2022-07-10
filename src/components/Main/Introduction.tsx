@@ -39,7 +39,7 @@ const SubTitle = styled.div`
 `
 
 const Title = styled.div`
-  margin-top: 5px;
+  margin-top: 10px;
   font-size: 35px;
   font-weight: 700;
 
@@ -57,8 +57,8 @@ const Introduction: FunctionComponent<IntroductionProps> = function ({
         <ProfileImage profileImage={profileImage} />
 
         <div>
-          <SubTitle>Nice to Meet You,</SubTitle>
-          <Title>I'm Junior Frontend Developer Saram</Title>
+          <SubTitle>반갑습니다,</SubTitle>
+          <Title>창의개발자 김사람입니다.</Title>
         </div>
       </Wrapper>
     </Background>
