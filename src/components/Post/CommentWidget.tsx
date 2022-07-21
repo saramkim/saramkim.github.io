@@ -2,7 +2,7 @@ import React, { createRef, FunctionComponent, useEffect } from 'react'
 import styled from '@emotion/styled'
 
 const src = 'https://utteranc.es/client.js'
-const repo = 'saramkim/saramkim.github.io' // 자신 계정의 레포지토리로 설정
+const repo = 'saramkim/saramkim.github.io'
 
 type UtterancesAttributesType = {
   src: string
@@ -15,7 +15,7 @@ type UtterancesAttributesType = {
 }
 
 const UtterancesWrapper = styled.div`
-  @media (max-width: 768px) {
+  @media (max-width: 1096px) {
     padding: 0 20px;
   }
 `

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { graphql } from 'gatsby'
-import { PostPageItemType } from 'types/PostItem.types' // 바로 아래에서 정의할 것입니다
+import { PostPageItemType } from 'types/PostItem.types'
 import Template from 'components/Common/Template'
 import PostHead from 'components/Post/PostHead'
 import PostContent from 'components/Post/PostContent'
