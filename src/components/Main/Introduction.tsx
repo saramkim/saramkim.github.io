@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   align-items: flex-start;
   width: 1080px;
   height: 400px;
-  margin: 0 auto;
+  margin: 50px auto 0;
   padding: 0 20px;
 
   @media (max-width: 1096px) {
@@ -31,7 +31,7 @@ const Wrapper = styled.div`
 `
 
 const SubTitle = styled.div`
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 400;
 
   @media (max-width: 768px) {

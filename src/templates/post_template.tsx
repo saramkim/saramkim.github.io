@@ -5,6 +5,7 @@ import Template from 'components/Common/Template'
 import PostHead from 'components/Post/PostHead'
 import PostContent from 'components/Post/PostContent'
 import CommentWidget from 'components/Post/CommentWidget'
+import Navbar from 'components/Common/Navbar'
 
 type PostTemplateProps = {
   data: {
@@ -41,6 +42,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
 
   return (
     <Template title={title} description={summary} url={href} image={publicURL}>
+      <Navbar />
       <PostHead
         title={title}
         date={date}

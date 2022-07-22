@@ -17,7 +17,7 @@ const defaultStyle = css`
     height: 100%;
   }
 
-  html {
+  body {
     background: #1c4470;
     background: -moz-linear-gradient(left, #1c4470 0%, #42a2bf 100%);
     background: -webkit-linear-gradient(left, #1c4470 0%, #42a2bf 100%);

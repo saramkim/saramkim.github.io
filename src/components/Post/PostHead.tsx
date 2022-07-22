@@ -15,9 +15,13 @@ type GatsbyImgProps = {
 
 const PostHeadWrapper = styled.div`
   position: relative;
-  width: 100%;
+  width: 1080px;
   height: 400px;
+  margin: 50px auto 0;
 
+  @media (max-width: 1096px) {
+    width: 100%;
+  }
   @media (max-width: 768px) {
     height: 300px;
   }
@@ -30,7 +34,7 @@ const BackgroundImage = styled((props: GatsbyImgProps) => (
   width: 100%;
   height: 400px;
   object-fit: cover;
-  filter: brightness(0.25);
+  filter: brightness(0.5);
 
   @media (max-width: 768px) {
     height: 300px;
