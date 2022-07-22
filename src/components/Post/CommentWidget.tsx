@@ -15,9 +15,11 @@ type UtterancesAttributesType = {
 }
 
 const UtterancesWrapper = styled.div`
-  @media (max-width: 1096px) {
-    padding: 0 20px;
-  }
+  padding: 0 20px;
+  margin: 0 auto;
+  width: 1080px;
+  background-color: white;
+  border-radius: 0 0 10px 10px;
 `
 
 const CommentWidget: FunctionComponent = function () {

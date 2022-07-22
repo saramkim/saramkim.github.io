@@ -9,7 +9,6 @@ type IntroductionProps = {
 
 const Background = styled.div`
   width: 100%;
-  background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
   color: #ffffff;
 `
 
@@ -21,10 +20,10 @@ const Wrapper = styled.div`
   width: 1080px;
   height: 400px;
   margin: 0 auto;
+  padding: 0 20px;
 
   @media (max-width: 1096px) {
     width: 100%;
-    padding: 0 20px;
   }
   @media (max-width: 768px) {
     height: 300px;
@@ -32,7 +31,7 @@ const Wrapper = styled.div`
 `
 
 const SubTitle = styled.div`
-  font-size: 25px;
+  font-size: 22px;
   font-weight: 400;
 
   @media (max-width: 768px) {

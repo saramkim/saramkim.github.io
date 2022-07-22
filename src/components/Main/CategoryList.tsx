@@ -23,14 +23,17 @@ const CategoryListWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 1080px;
-  margin: 100px auto 0;
+  margin: 0 auto;
+  padding: 40px 20px 0;
+  background-color: white;
+  border-radius: 10px 10px 0 0;
+  border-bottom: 1px solid black;
 
   @media (max-width: 1096px) {
     width: 100%;
-    padding: 0 20px;
   }
   @media (max-width: 768px) {
-    margin-top: 50px;
+    padding: 20px 20px 0;
   }
 `
 

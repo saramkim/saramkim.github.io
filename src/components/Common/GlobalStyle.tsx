@@ -17,6 +17,14 @@ const defaultStyle = css`
     height: 100%;
   }
 
+  html {
+    background: #1c4470;
+    background: -moz-linear-gradient(left, #1c4470 0%, #42a2bf 100%);
+    background: -webkit-linear-gradient(left, #1c4470 0%, #42a2bf 100%);
+    background: linear-gradient(to right, #1c4470 0%, #42a2bf 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c4470', endColorstr='#42a2bf',GradientType=1 );
+  }
+
   a,
   a:hover {
     color: inherit;

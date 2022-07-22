@@ -15,11 +15,13 @@ const PostHeadInfoWrapper = styled.div`
   width: 1080px;
   height: 100%;
   margin: 0 auto;
-  padding: 60px 0;
+  padding: 60px 20px;
   color: #ffffff;
 
   @media (max-width: 1096px) {
     width: 100%;
+  }
+  @media (max-width: 768px) {
     padding: 40px 20px;
   }
 `

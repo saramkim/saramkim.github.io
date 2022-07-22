@@ -11,8 +11,9 @@ const MarkdownRenderer = styled.div`
   flex-direction: column;
   width: 1080px;
   margin: 0 auto;
-  padding: 100px 0;
+  padding: 100px 20px;
   word-break: break-all;
+  background-color: white;
 
   // Markdown Style
   line-height: 1.8;
@@ -103,11 +104,11 @@ const MarkdownRenderer = styled.div`
   // Markdown Responsive Design
   @media (max-width: 1096px) {
     width: 100%;
-    padding: 80px 20px;
   }
   @media (max-width: 768px) {
     line-height: 1.6;
     font-size: 14px;
+    padding: 80px 20px;
 
     h1 {
       font-size: 23px;
