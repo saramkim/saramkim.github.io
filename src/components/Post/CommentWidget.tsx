@@ -20,6 +20,10 @@ const UtterancesWrapper = styled.div`
   width: 1080px;
   background-color: white;
   border-radius: 0 0 10px 10px;
+
+  @media (max-width: 1096px) {
+    width: 100%;
+  }
 `
 
 const CommentWidget: FunctionComponent = function () {
