@@ -1,5 +1,6 @@
 import { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
+import { Link } from 'gatsby'
 
 const Background = styled.div`
   width: 100%;
@@ -28,7 +29,7 @@ const Wrapper = styled.div`
   }
 `
 
-const Title = styled.div`
+const Title = styled(Link)`
   font-size: 20px;
 
   @media (max-width: 768px) {
@@ -48,7 +49,7 @@ const Navbar: FunctionComponent = function () {
   return (
     <Background>
       <Wrapper>
-        <Title>김사람 블로그</Title>
+        <Title to={'/'}>김사람 블로그</Title>
         <Buttons>@</Buttons>
       </Wrapper>
     </Background>

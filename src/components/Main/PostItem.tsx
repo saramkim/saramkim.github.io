@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
@@ -23,6 +23,7 @@ const ThumbnailImage = styled(GatsbyImage)`
   width: 100%;
   height: 200px;
   border-radius: 10px 10px 0 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 `
 
 const PostItemContent = styled.div`
@@ -41,7 +42,7 @@ const Title = styled.div`
   overflow-wrap: break-word;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
 `
 
@@ -64,7 +65,7 @@ const CategoryItem = styled.div`
   border-radius: 3px;
   background: black;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 500;
   color: white;
 `
 

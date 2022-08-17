@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import { FunctionComponent } from 'react'
 import { graphql } from 'gatsby'
 import { Global, css } from '@emotion/react'
 import styled from '@emotion/styled'
@@ -26,12 +26,12 @@ const globalStyle = css`
 `
 const TextStyle = css`
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 500;
   color: gray;
 `
 const Text1 = styled.div<{ disable: boolean }>`
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 500;
   text-decoration: ${({ disable }) => (disable ? 'line-through' : 'none')};
 `
 

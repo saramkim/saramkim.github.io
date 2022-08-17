@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
 
 interface PostContentProps {
@@ -11,12 +11,11 @@ const MarkdownRenderer = styled.div`
   flex-direction: column;
   width: 1080px;
   margin: 0 auto;
-  padding: 100px 20px;
+  padding: 80px 20px;
   word-break: break-all;
   background-color: white;
 
   // Markdown Style
-  line-height: 1.8;
   font-size: 18px;
   font-weight: 400;
 
@@ -29,14 +28,12 @@ const MarkdownRenderer = styled.div`
   h1,
   h2,
   h3 {
-    font-weight: 800;
-    margin-bottom: 30px;
+    font-weight: 700;
   }
 
   * + h1,
   * + h2,
   * + h3 {
-    margin-top: 80px;
   }
 
   hr + h1,
@@ -46,15 +43,27 @@ const MarkdownRenderer = styled.div`
   }
 
   h1 {
-    font-size: 40px;
+    font-size: 50px;
+    margin: 40px 0;
   }
 
   h2 {
-    font-size: 35px;
+    font-size: 45px;
+    margin: 30px 0;
   }
 
   h3 {
+    font-size: 40px;
+    margin: 20px 0;
+  }
+  h4 {
+    font-size: 35px;
+  }
+  h5 {
     font-size: 30px;
+  }
+  h6 {
+    font-size: 25px;
   }
 
   // Adjust Quotation Element Style
@@ -62,14 +71,14 @@ const MarkdownRenderer = styled.div`
     margin: 30px 0;
     padding: 5px 15px;
     border-left: 2px solid #000000;
-    font-weight: 800;
+    font-weight: 700;
   }
 
   // Adjust List Element Style
   ol,
   ul {
     margin-left: 20px;
-    padding: 30px 0;
+    // padding: 30px 0;
   }
 
   // Adjust Horizontal Rule style
@@ -80,7 +89,8 @@ const MarkdownRenderer = styled.div`
 
   // Adjust Link Element Style
   a {
-    color: #4263eb;
+    // color: #4263eb;
+    color: crimson;
     text-decoration: underline;
   }
 
@@ -108,18 +118,18 @@ const MarkdownRenderer = styled.div`
   @media (max-width: 768px) {
     line-height: 1.6;
     font-size: 14px;
-    padding: 80px 20px;
+    padding: 60px 20px;
 
     h1 {
-      font-size: 23px;
+      font-size: 25px;
     }
 
     h2 {
-      font-size: 20px;
+      font-size: 23px;
     }
 
     h3 {
-      font-size: 17px;
+      font-size: 20px;
     }
 
     img {

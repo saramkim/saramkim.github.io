@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 import GlobalStyle from 'components/Common/GlobalStyle'
@@ -13,7 +13,7 @@ const NotFoundPageWrapper = styled.div`
 
 const NotFoundText = styled.div`
   font-size: 150px;
-  font-weight: 800;
+  font-weight: 500;
 
   @media (max-width: 768px) {
     font-size: 100px;

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
@@ -55,7 +55,7 @@ const Title = styled.div`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   font-size: 45px;
-  font-weight: 800;
+  font-weight: 500;
 
   @media (max-width: 768px) {
     font-size: 30px;
@@ -68,7 +68,7 @@ const PostData = styled.div`
   align-items: center;
   margin-top: 10px;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 500;
 
   @media (max-width: 768px) {
     flex-direction: column;

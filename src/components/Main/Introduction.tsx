@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 import ProfileImage from 'components/Main/ProfileImage'
@@ -31,22 +31,20 @@ const Wrapper = styled.div`
 `
 
 const SubTitle = styled.div`
-  font-size: 25px;
+  font-size: 22px;
   font-weight: 400;
 
   @media (max-width: 768px) {
-    font-size: 18px;
+    font-size: 16px;
   }
 `
 
 const Title = styled.div`
-  margin-top: 15px;
   font-size: 35px;
-  font-weight: 700;
+  font-weight: 500;
 
   @media (max-width: 768px) {
     font-size: 25px;
-    margin-top: 10px;
   }
 `
 
