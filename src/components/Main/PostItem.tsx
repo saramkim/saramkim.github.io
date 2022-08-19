@@ -1,37 +1,37 @@
-import { FunctionComponent } from 'react'
-import styled from '@emotion/styled'
-import { Link } from 'gatsby'
-import { GatsbyImage } from 'gatsby-plugin-image'
-import { PostFrontmatterType } from 'types/PostItem.types'
+import { FunctionComponent } from 'react';
+import styled from '@emotion/styled';
+import { Link } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import { PostFrontmatterType } from 'types/PostItem.types';
 
-type PostItemProps = PostFrontmatterType & { link: string }
+type PostItemProps = PostFrontmatterType & { link: string };
 
 const PostItemWrapper = styled(Link)`
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   transition: 0.3s box-shadow;
   cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
 
   &:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
   }
-`
+`;
 
 const ThumbnailImage = styled(GatsbyImage)`
   width: 100%;
   height: 200px;
   border-radius: 10px 10px 0 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-`
+`;
 
 const PostItemContent = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
   padding: 15px;
-`
+`;
 
 const Title = styled.div`
   display: -webkit-box;
@@ -44,20 +44,20 @@ const Title = styled.div`
   -webkit-box-orient: vertical;
   font-size: 24px;
   font-weight: 700;
-`
+`;
 
 const Date = styled.div`
   font-size: 14px;
   font-weight: 400;
   opacity: 0.7;
-`
+`;
 
 const Category = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-top: 10px;
   margin: 10px -5px;
-`
+`;
 
 const CategoryItem = styled.div`
   margin: 2.5px 5px;
@@ -67,12 +67,12 @@ const CategoryItem = styled.div`
   font-size: 14px;
   font-weight: 500;
   color: white;
-`
+`;
 
 const Summary = styled.div`
   display: -webkit-box;
   overflow: hidden;
-  margin-top: auto;
+  margin: auto 0;
   text-overflow: ellipsis;
   white-space: normal;
   overflow-wrap: break-word;
@@ -80,7 +80,7 @@ const Summary = styled.div`
   -webkit-box-orient: vertical;
   font-size: 16px;
   opacity: 0.8;
-`
+`;
 
 const PostItem: FunctionComponent<PostItemProps> = function ({
   title,
@@ -94,20 +94,20 @@ const PostItem: FunctionComponent<PostItemProps> = function ({
 }) {
   return (
     <PostItemWrapper to={link}>
-      <ThumbnailImage image={gatsbyImageData} alt="Post Item Image" />
+      <ThumbnailImage image={gatsbyImageData} alt='Post Item Image' />
 
       <PostItemContent>
         <Title>{title}</Title>
         <Date>{date}</Date>
         <Category>
-          {categories.map(item => (
+          {categories.map((item) => (
             <CategoryItem key={item}>{item}</CategoryItem>
           ))}
         </Category>
         <Summary>{summary}</Summary>
       </PostItemContent>
     </PostItemWrapper>
-  )
-}
+  );
+};
 
-export default PostItem
+export default PostItem;

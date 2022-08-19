@@ -1,23 +1,23 @@
-import { FunctionComponent, ReactNode } from 'react'
-import styled from '@emotion/styled'
-import { Link } from 'gatsby'
+import { FunctionComponent, ReactNode } from 'react';
+import styled from '@emotion/styled';
+import { Link } from 'gatsby';
 
 export type CategoryListProps = {
-  selectedCategory: string
+  selectedCategory: string;
   categoryList: {
-    [key: string]: number
-  }
-}
+    [key: string]: number;
+  };
+};
 
 type CategoryItemProps = {
-  active: boolean
-}
+  active: boolean;
+};
 
 type GatsbyLinkProps = {
-  children: ReactNode
-  className?: string
-  to: string
-} & CategoryItemProps
+  children: ReactNode;
+  className?: string;
+  to: string;
+} & CategoryItemProps;
 
 const CategoryListWrapper = styled.div`
   display: flex;
@@ -27,7 +27,7 @@ const CategoryListWrapper = styled.div`
   padding: 40px 20px 0;
   background-color: white;
   border-radius: 10px 10px 0 0;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 
   @media (max-width: 1096px) {
     width: 100%;
@@ -35,9 +35,8 @@ const CategoryListWrapper = styled.div`
   @media (max-width: 768px) {
     padding: 20px 20px 0;
   }
-`
+`;
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const CategoryItem = styled(({ active, ...props }: GatsbyLinkProps) => (
   <Link {...props} />
 ))<CategoryItemProps>`
@@ -54,7 +53,7 @@ const CategoryItem = styled(({ active, ...props }: GatsbyLinkProps) => (
   @media (max-width: 768px) {
     font-size: 15px;
   }
-`
+`;
 
 const CategoryList: FunctionComponent<CategoryListProps> = function ({
   selectedCategory,
@@ -63,16 +62,12 @@ const CategoryList: FunctionComponent<CategoryListProps> = function ({
   return (
     <CategoryListWrapper>
       {Object.entries(categoryList).map(([name, count]) => (
-        <CategoryItem
-          to={`/?category=${name}`}
-          active={name === selectedCategory}
-          key={name}
-        >
+        <CategoryItem to={`/?category=${name}`} active={name === selectedCategory} key={name}>
           #{name}({count})
         </CategoryItem>
       ))}
     </CategoryListWrapper>
-  )
-}
+  );
+};
 
-export default CategoryList
+export default CategoryList;

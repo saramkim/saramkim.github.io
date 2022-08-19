@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
+    "module": "CommonJS",
     "allowJs": true,
     "jsx": "preserve",
     "strict": true,
@@ -18,7 +18,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "types": ["@emotion/react/types/css-prop"]
+    "jsxImportSource": "@emotion/react"
   },
   "include": ["src/**/*.tsx"],
   "exclude": ["node_modules"]

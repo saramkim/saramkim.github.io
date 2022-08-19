@@ -3,7 +3,7 @@ date: '2022-08-18'
 title: 'TimeLog'
 categories: ['TimeLog', 'Project']
 summary: '시간 관리 웹 애플리케이션 TimeLog 소개 및 활용법'
-thumbnail: './images/timelog-post.png'
+thumbnail: './TimeLog/timelog-post.png'
 ---
 
 > ##### Control your time.
@@ -39,11 +39,11 @@ thumbnail: './images/timelog-post.png'
 
 <br><br/>
 
-![main](./images/timelog-main.png)
-![day](./images/day-chart.png)
-![week](./images/week-chart.png)
-![month](./images/month-chart.png)
-![year](./images/year-chart.png)
+![main](./TimeLog/timelog-main.png)
+![day](./TimeLog/day-chart.png)
+![week](./TimeLog/week-chart.png)
+![month](./TimeLog/month-chart.png)
+![year](./TimeLog/year-chart.png)
 
 \*예시 사진입니다.
 

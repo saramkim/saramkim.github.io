@@ -47,7 +47,7 @@ const NotFoundPage: FunctionComponent = function () {
       <NotFoundText>404</NotFoundText>
       <NotFoundDescription>
         찾을 수 없는 페이지입니다. <br />
-        다른 콘텐츠를 보러 가보시겠어요?
+        이쪽으로 안내해드리겠습니다.
       </NotFoundDescription>
       <GoToMainButton to="/">메인으로</GoToMainButton>
     </NotFoundPageWrapper>

@@ -1,8 +1,8 @@
-import { FunctionComponent } from 'react'
-import styled from '@emotion/styled'
+import { FunctionComponent } from 'react';
+import styled from '@emotion/styled';
 
 interface PostContentProps {
-  html: string
+  html: string;
 }
 
 const MarkdownRenderer = styled.div`
@@ -49,12 +49,12 @@ const MarkdownRenderer = styled.div`
 
   h2 {
     font-size: 45px;
-    margin: 30px 0;
+    margin: 35px 0;
   }
 
   h3 {
     font-size: 40px;
-    margin: 20px 0;
+    margin: 30px 0;
   }
   h4 {
     font-size: 35px;
@@ -140,10 +140,10 @@ const MarkdownRenderer = styled.div`
       margin: 50px 0;
     }
   }
-`
+`;
 
 const PostContent: FunctionComponent<PostContentProps> = function ({ html }) {
-  return <MarkdownRenderer dangerouslySetInnerHTML={{ __html: html }} />
-}
+  return <MarkdownRenderer dangerouslySetInnerHTML={{ __html: html }} />;
+};
 
-export default PostContent
+export default PostContent;

@@ -1,17 +1,18 @@
-import { FunctionComponent } from 'react'
-import styled from '@emotion/styled'
-import { IGatsbyImageData } from 'gatsby-plugin-image'
-import ProfileImage from 'components/Main/ProfileImage'
-import { GoMarkGithub } from 'react-icons/go'
+import { FunctionComponent } from 'react';
+import styled from '@emotion/styled';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
+import ProfileImage from 'components/Main/ProfileImage';
+import { GoMarkGithub } from 'react-icons/go';
+import { Link } from 'gatsby';
 
 type IntroductionProps = {
-  profileImage: IGatsbyImageData
-}
+  profileImage: IGatsbyImageData;
+};
 
 const Background = styled.div`
   width: 100%;
   color: #ffffff;
-`
+`;
 
 const Wrapper = styled.div`
   position: relative;
@@ -28,7 +29,7 @@ const Wrapper = styled.div`
   @media (max-width: 768px) {
     height: 200px;
   }
-`
+`;
 
 const SubTitle = styled.div`
   font-size: 22px;
@@ -37,7 +38,7 @@ const SubTitle = styled.div`
   @media (max-width: 768px) {
     font-size: 16px;
   }
-`
+`;
 
 const Title = styled.div`
   font-size: 35px;
@@ -46,9 +47,9 @@ const Title = styled.div`
   @media (max-width: 768px) {
     font-size: 25px;
   }
-`
+`;
 
-const MoreInfo = styled.div`
+const MoreInfo = styled(Link)`
   position: absolute;
   right: 20px;
   font-size: 50px;
@@ -56,11 +57,9 @@ const MoreInfo = styled.div`
   @media (max-width: 768px) {
     font-size: 40px;
   }
-`
+`;
 
-const Introduction: FunctionComponent<IntroductionProps> = function ({
-  profileImage,
-}) {
+const Introduction: FunctionComponent<IntroductionProps> = function ({ profileImage }) {
   return (
     <Background>
       <Wrapper>
@@ -70,12 +69,12 @@ const Introduction: FunctionComponent<IntroductionProps> = function ({
           <SubTitle>개발하는 개발자</SubTitle>
           <Title>김사람</Title>
         </div>
-        <MoreInfo>
+        <MoreInfo to={'https://github.com/saramkim'}>
           <GoMarkGithub />
         </MoreInfo>
       </Wrapper>
     </Background>
-  )
-}
+  );
+};
 
-export default Introduction
+export default Introduction;
