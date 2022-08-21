@@ -1,17 +1,17 @@
-import { FunctionComponent } from 'react'
-import styled from '@emotion/styled'
-import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
-import PostHeadInfo, { PostHeadInfoProps } from 'components/Post/PostHeadInfo'
+import { FunctionComponent } from 'react';
+import styled from '@emotion/styled';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
+import PostHeadInfo, { PostHeadInfoProps } from 'components/Post/PostHeadInfo';
 
 type PostHeadProps = PostHeadInfoProps & {
-  thumbnail: IGatsbyImageData
-}
+  thumbnail: IGatsbyImageData;
+};
 
 type GatsbyImgProps = {
-  image: IGatsbyImageData
-  alt: string
-  className?: string
-}
+  image: IGatsbyImageData;
+  alt: string;
+  className?: string;
+};
 
 const PostHeadWrapper = styled.div`
   position: relative;
@@ -25,7 +25,7 @@ const PostHeadWrapper = styled.div`
   @media (max-width: 768px) {
     height: 300px;
   }
-`
+`;
 
 const BackgroundImage = styled((props: GatsbyImgProps) => (
   <GatsbyImage {...props} style={{ position: 'absolute' }} />
@@ -34,12 +34,12 @@ const BackgroundImage = styled((props: GatsbyImgProps) => (
   width: 100%;
   height: 400px;
   object-fit: cover;
-  filter: brightness(0.5);
+  filter: brightness(0.4);
 
   @media (max-width: 768px) {
     height: 300px;
   }
-`
+`;
 
 const PostHead: FunctionComponent<PostHeadProps> = function ({
   title,
@@ -49,10 +49,10 @@ const PostHead: FunctionComponent<PostHeadProps> = function ({
 }) {
   return (
     <PostHeadWrapper>
-      <BackgroundImage image={thumbnail} alt="thumbnail" />
+      <BackgroundImage image={thumbnail} alt='thumbnail' />
       <PostHeadInfo title={title} date={date} categories={categories} />
     </PostHeadWrapper>
-  )
-}
+  );
+};
 
-export default PostHead
+export default PostHead;

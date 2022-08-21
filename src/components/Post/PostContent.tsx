@@ -89,8 +89,7 @@ const MarkdownRenderer = styled.div`
 
   // Adjust Link Element Style
   a {
-    // color: #4263eb;
-    color: crimson;
+    color: #4263eb;
     text-decoration: underline;
   }
 
@@ -117,19 +116,29 @@ const MarkdownRenderer = styled.div`
   }
   @media (max-width: 768px) {
     line-height: 1.6;
-    font-size: 14px;
+    font-size: 15px;
     padding: 60px 20px;
 
     h1 {
-      font-size: 25px;
+      font-size: 34px;
+      margin: 20px 0;
     }
-
     h2 {
-      font-size: 23px;
+      font-size: 30px;
+      margin: 15px 0;
     }
-
     h3 {
+      font-size: 26px;
+      margin: 10px 0;
+    }
+    h4 {
+      font-size: 22px;
+    }
+    h5 {
       font-size: 20px;
+    }
+    h6 {
+      font-size: 18px;
     }
 
     img {

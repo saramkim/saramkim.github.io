@@ -29,12 +29,12 @@ const PostHeadInfoWrapper = styled.div`
 const PrevPageIcon = styled.div`
   display: grid;
   place-items: center;
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   background: #ffffff;
   color: #000000;
-  font-size: 28px;
+  font-size: 30px;
   cursor: pointer;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 
@@ -58,7 +58,7 @@ const Title = styled.div`
   font-weight: 500;
 
   @media (max-width: 768px) {
-    font-size: 40px;
+    font-size: 30px;
   }
 `;
 
@@ -67,7 +67,7 @@ const PostData = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 10px;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 500;
 
   @media (max-width: 768px) {

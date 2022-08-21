@@ -24,6 +24,12 @@ module.exports = {
     `gatsby-plugin-emotion`,
     `gatsby-plugin-react-helmet`,
     {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        icon: 'static/blog-logo.png',
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `contents`,

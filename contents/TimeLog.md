@@ -58,7 +58,7 @@ thumbnail: './TimeLog/timelog-post.png'
 
 - ### Manual
 
-> ###### Alarm
+> ##### Alarm
 
 - 스스로 마감 시간을 만들어 집중력 향상
 
@@ -68,13 +68,13 @@ thumbnail: './TimeLog/timelog-post.png'
 
 - 뽀모도로 기법 활용<br><br/>
 
-> ###### Timer
+> ##### Timer
 
 - 집중하는 시간을 기록
 
 - 최대 집중 시간 갱신<br><br/>
 
-> ###### Chart
+> ##### Chart
 
 - 절대 집중 시간 확인
 
@@ -84,7 +84,7 @@ thumbnail: './TimeLog/timelog-post.png'
 
 - 수치로 볼 수 있는 발전<br><br/>
 
-> ###### 추천하는 사용법
+> ##### 추천하는 사용법
 
 **0. 브라우저 탭 창에서 TimeLog 탭 우클릭 -> 탭 고정**<br><br/>
 

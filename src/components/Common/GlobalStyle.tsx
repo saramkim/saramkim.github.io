@@ -18,7 +18,7 @@ const defaultStyle = css`
   }
 
   body {
-    background: #1c4470;
+    background: #286289;
     background: -moz-linear-gradient(left, #1c4470 0%, #42a2bf 100%);
     background: -webkit-linear-gradient(left, #1c4470 0%, #42a2bf 100%);
     background: linear-gradient(to right, #1c4470 0%, #42a2bf 100%);
