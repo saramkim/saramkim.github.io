@@ -1,28 +1,45 @@
-import { FunctionComponent } from 'react'
-import { graphql } from 'gatsby'
-import { PostPageItemType } from 'types/PostItem.types'
-import Template from 'components/Common/Template'
-import PostHead from 'components/Post/PostHead'
-import PostContent from 'components/Post/PostContent'
-import CommentWidget from 'components/Post/CommentWidget'
-import Navbar from 'components/Common/Navbar'
+import { FunctionComponent } from 'react';
+import { graphql } from 'gatsby';
+import { PostPageItemType } from 'types/PostItem.types';
+import Template from 'components/Common/Template';
+import PostHead from 'components/Post/PostHead';
+import PostContent from 'components/Post/PostContent';
+import CommentWidget from 'components/Post/CommentWidget';
+import Navbar from 'components/Common/Navbar';
+import PostFoot from 'components/Post/PostFoot';
+
+type PageContextData = {
+  fields: {
+    slug: string;
+  };
+  frontmatter: {
+    title: string;
+  };
+};
+
+export type PageContext = {
+  next: PageContextData;
+  prev: PageContextData;
+};
 
 type PostTemplateProps = {
   data: {
     allMarkdownRemark: {
-      edges: PostPageItemType[]
-    }
-  }
+      edges: PostPageItemType[];
+    };
+  };
   location: {
-    href: string
-  }
-}
+    href: string;
+  };
+  pageContext: PageContext;
+};
 
 const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
   data: {
     allMarkdownRemark: { edges },
   },
   location: { href },
+  pageContext: { next, prev },
 }) {
   const {
     node: {
@@ -38,24 +55,21 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
         },
       },
     },
-  } = edges[0]
+  } = edges[0];
 
   return (
     <Template title={title} description={summary} url={href} image={publicURL}>
       <Navbar />
-      <PostHead
-        title={title}
-        date={date}
-        categories={categories}
-        thumbnail={gatsbyImageData}
-      />
+      <PostHead title={title} date={date} categories={categories} thumbnail={gatsbyImageData} />
       <PostContent html={html} />
+      <PostFoot next={next} prev={prev} />
+
       <CommentWidget />
     </Template>
-  )
-}
+  );
+};
 
-export default PostTemplate
+export default PostTemplate;
 
 export const queryMarkdownDataBySlug = graphql`
   query queryMarkdownDataBySlug($slug: String) {
@@ -79,4 +93,4 @@ export const queryMarkdownDataBySlug = graphql`
       }
     }
   }
-`
+`;

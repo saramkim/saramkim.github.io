@@ -4,6 +4,7 @@ import { IGatsbyImageData } from 'gatsby-plugin-image';
 import ProfileImage from 'components/Main/ProfileImage';
 import { GoMarkGithub } from 'react-icons/go';
 import { Link } from 'gatsby';
+import { ImMail4 } from 'react-icons/im';
 
 type IntroductionProps = {
   profileImage: IGatsbyImageData;
@@ -49,13 +50,18 @@ const Title = styled.div`
   }
 `;
 
-const MoreInfo = styled(Link)`
+const MoreInfo = styled.div`
   position: absolute;
   right: 20px;
   font-size: 50px;
+  width: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   @media (max-width: 768px) {
     font-size: 40px;
+    width: 90px;
   }
 `;
 
@@ -69,8 +75,13 @@ const Introduction: FunctionComponent<IntroductionProps> = function ({ profileIm
           <SubTitle>개발하는 개발자</SubTitle>
           <Title>김사람</Title>
         </div>
-        <MoreInfo to={'https://github.com/saramkim'}>
-          <GoMarkGithub />
+        <MoreInfo>
+          <Link to={'https://github.com/saramkim'}>
+            <ImMail4 />
+          </Link>
+          <Link to={'https://github.com/saramkim'}>
+            <GoMarkGithub />
+          </Link>
         </MoreInfo>
       </Wrapper>
     </Background>

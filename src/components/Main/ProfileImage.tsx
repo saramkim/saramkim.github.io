@@ -1,10 +1,10 @@
-import { FunctionComponent } from 'react'
-import styled from '@emotion/styled'
-import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
+import { FunctionComponent } from 'react';
+import styled from '@emotion/styled';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 
 type ProfileImageProps = {
-  profileImage: IGatsbyImageData
-}
+  profileImage: IGatsbyImageData;
+};
 
 const ProfileImageWrapper = styled(GatsbyImage)`
   width: 120px;
@@ -15,13 +15,12 @@ const ProfileImageWrapper = styled(GatsbyImage)`
   @media (max-width: 768px) {
     width: 80px;
     height: 80px;
+    margin-right: 10px;
   }
-`
+`;
 
-const ProfileImage: FunctionComponent<ProfileImageProps> = function ({
-  profileImage,
-}) {
-  return <ProfileImageWrapper image={profileImage} alt="Profile Image" />
-}
+const ProfileImage: FunctionComponent<ProfileImageProps> = function ({ profileImage }) {
+  return <ProfileImageWrapper image={profileImage} alt='Profile Image' />;
+};
 
-export default ProfileImage
+export default ProfileImage;

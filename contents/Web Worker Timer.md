@@ -2,7 +2,7 @@
 date: '2022-08-22'
 title: 'Web Worker Timer'
 categories: ['React', 'TS']
-summary: '[React&TS] web worker를 이용한 타이머 만들기'
+summary: 'Web worker를 이용한 타이머 만들기'
 thumbnail: './WebWorkerTimer/20220821_230348.jpg'
 ---
 
@@ -37,7 +37,11 @@ thumbnail: './WebWorkerTimer/20220821_230348.jpg'
 
 크롬은 메모리가 부족하면 비활성 탭이 절전 되는 기능인, "Automatic tab discarding"이 내장되어 있습니다.
 
-"chrome://flags"에서 Automatic tab discarding을 조절할 수 있었지만 없어졌고, "chrome://discards/"에 접속하면 모든 탭에 Auto Discardable이 활성화 되어 있는 것을 확인할 수 있습니다. (참고로 Graph탭에서 Web Workers를 확인할 수도 있습니다)
+"chrome://flags"에서 Automatic tab discarding을 조절할 수 있었지만 없어졌고,
+
+"chrome://discards"에 접속하면 모든 탭에 Auto Discardable이 활성화 되어 있는 것을 확인할 수 있습니다.
+
+(참고로 Graph탭에서 Web Workers를 확인할 수도 있습니다)
 
 이 기능으로 인해 탭이 절전 됐거나, 다른 내장 기능에 의해 자동으로 백그라운드 모드에 진입해서 지연된 것 같습니다.
 
@@ -75,7 +79,7 @@ self.onmessage = () => {
     self.postMessage(time);
   }, 100);
 };
-export {};
+export {}; // --isolatedModules 에러 피하기 (모듈화)
 
 ```
 
@@ -126,9 +130,9 @@ export default Timer;
 
 1. Background thread에서 실행할 Worker sciprt를 worker.ts에 작성합니다. (이하 worker)<br></br>
 
-2. Timer.tsx(main script)에서 `new Worker()`로 해당 worker를 실행합니다.
+2. Timer.tsx(main script)에서 `new Worker()`로 worker를 실행합니다.
 
-   - 한 번만 실행되도록 useEffect 내에 선언하였고, unmount될 때 `worker.terminate()`로 worker가 종료되도록 하였습니다.<br></br>
+   - timerOn 값이 바뀔 때마다 그 전에 `worker.terminate()`로 현재 worker가 종료되고, 이후 새로운 worker를 실행합니다.<br></br>
 
 3. 타이머 버튼의 클릭 이벤트로 timerOn 값이 true가 되면, `worker.postMessage()`로 worker에 메세지 데이터를 전달합니다.
 

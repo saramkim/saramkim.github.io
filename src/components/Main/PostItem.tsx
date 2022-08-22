@@ -10,10 +10,10 @@ const PostItemWrapper = styled(Link)`
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   transition: 0.3s box-shadow;
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 
   &:hover {
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
