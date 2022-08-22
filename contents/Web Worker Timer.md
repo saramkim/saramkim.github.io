@@ -1,53 +1,64 @@
 ---
-date: '2022-08-21'
+date: '2022-08-22'
 title: 'Web Worker Timer'
 categories: ['React', 'TS']
 summary: '[React&TS] web worker를 이용한 타이머 만들기'
 thumbnail: './WebWorkerTimer/20220821_230348.jpg'
 ---
 
-### Timer 제작 변천사
+### Timer 제작 과정
 
-> setInterval -> useInterval -> Web worker
+> ###### setInterval → useInterval → Web Worker
 
-[TimeLog](https://saramkim.github.io/time-log)에 들어갈 타이머를 만드는 과정의 경험을 공유하고자 합니다.
+[TimeLog](https://saramkim.github.io/time-log)에 사용할 타이머를 만드는 과정에서 겪은 경험을 공유하고자 합니다.<br></br>
 
-처음은 누구나 그러하듯이 setInterval로 시작했습니다.
+처음은 누구라도 그러하듯이 **setInterval**로 타이머를 만들기 시작했습니다.
 
-하지만 생각처럼 구현되지 않아 검색을 해보니 setInterval에 몇가지 문제가 있었는데, 그 해결책으로 useInterval이라는 custom hook이 있었습니다. (문제에 관한 내용은 아래 참고 링크에 있습니다.)
+하지만 타이머가 제대로 작동하지 않아 검색을 해보니, setInterval에 몇 가지 문제가 있는데,
 
-즉시 useInterval로 바꾸었고, 타이머가 잘 동작하여 뿌듯했습니다.
+그 해결책으로 **useInterval**이라는 custom Hook을 발견했습니다. (문제에 관한 내용은 아래 참고 링크에 있습니다)
 
-허나 저의 뿌듯함을 비웃듯 타이머는 다른 문제를 가져왔습니다.
+따라서 useInterval로 바꾸었고, 타이머가 작동하여 뿌듯한 기분으로 다른 작업을 하였습니다.<br></br>
 
-오래 작동해보니 타이머에 지연이 생긴 것입니다.
+하지만 저의 뿌듯함을 비웃듯 타이머에 또 다른 문제가 생겼습니다.
 
-그래서 검색을 통해 원인을 찾았습니다.
+타이머를 오래 작동하면 타이머에 지연이 생기는 것이었습니다.
+
+이번에도 검색을 통해 문제의 원인을 찾아보았습니다.<br></br>
 
 - CPU가 과부하 상태인 경우
 - 브라우저 탭이 백그라운드 모드인 경우
-- 노트북이 배터리에 의존해서 구동 중인 경우
+- 노트북이 배터리에 의존해서 구동 중인 경우<br></br>
 
-위의 경우 브라우저 내 타이머가 느려져 setInterval의 지연 간격이 길어진다는 것을 알았습니다.
+위의 경우 브라우저 내 타이머가 느려져 setInterval의 지연 간격이 길어진다는 것이었습니다. (useInterval도 setInterval을 사용합니다)
 
-useInterval도 결국은 setInterval을 이용하는 것이니 말입니다.
+<details>
+<summary>경우 추측</summary>
 
-저의 경우는 <브라우저 탭이 백그라운드 모드인 경우>에 해당했습니다.
+크롬은 메모리가 부족하면 비활성 탭이 절전 되는 기능인, "Automatic tab discarding"이 내장되어 있습니다.
 
-무수한 검색을 하다 Web worker를 발견했습니다.
+"chrome://flags"에서 Automatic tab discarding을 조절할 수 있었지만 없어졌고, "chrome://discards/"에 접속하면 모든 탭에 Auto Discardable이 활성화 되어 있는 것을 확인할 수 있습니다. (참고로 Graph탭에서 Web Workers를 확인할 수도 있습니다)
 
-자바스크립트의 single thread와 별개로 동작하여 브라우저가 백그라운드 모드가 되어도 상관이 없었습니다.
+이 기능으로 인해 탭이 절전 됐거나, 다른 내장 기능에 의해 자동으로 백그라운드 모드에 진입해서 지연된 것 같습니다.
 
-개별 thread인 worker에서 setInterval을 작동하면 문제가 없겠습니다.
+</details><br>
 
-그럼 어서 적용합시다.
+이를 해결하기 위한 무수한 검색 중에 Web Worker를 발견합니다.<br></br>
+
+**Web Worker**는 웹의 Main thread에서 실행되는 script와 별개로, Background thread에서 실행되는 script입니다.
+
+따라서 Web Worker에서 setInterval을 사용하면 브라우저 내 타이머 지연과 상관없이 정상 작동합니다.
+
+그러니 어서 사용합시다. (React & TypeScript 기준)
+
+---
 
 ```json
 // tsconfig.json
 {
   "compilerOptions": {
     ...
-    "lib": [ ... "WebWorker"],
+    "lib": [ ... "WebWorker"], // Worker Scope에서 쓰이는 타입 추가
     ...
     }
 }
@@ -55,7 +66,7 @@ useInterval도 결국은 setInterval을 이용하는 것이니 말입니다.
 
 ```js
 // worker.ts
-const self = globalThis as unknown as DedicatedWorkerGlobalScope;
+const self = globalThis as unknown as DedicatedWorkerGlobalScope; // Double assertion
 let time = 0;
 
 self.onmessage = () => {
@@ -83,7 +94,7 @@ function Timer() {
   };
 
   useEffect(() => {
-    const worker = new Worker(new URL('./worker', import.meta.url));
+    const worker = new Worker(new URL('./worker', import.meta.url)); // webpack5 이후 용법
     if (timerOn === true) {
       worker.postMessage('timer start');
       worker.onmessage = (e: MessageEvent<string>) => {
@@ -111,10 +122,40 @@ export default Timer;
 
 ---
 
+### 동작 과정
+
+1. Background thread에서 실행할 Worker sciprt를 worker.ts에 작성합니다. (이하 worker)<br></br>
+
+2. Timer.tsx(main script)에서 `new Worker()`로 해당 worker를 실행합니다.
+
+   - 한 번만 실행되도록 useEffect 내에 선언하였고, unmount될 때 `worker.terminate()`로 worker가 종료되도록 하였습니다.<br></br>
+
+3. 타이머 버튼의 클릭 이벤트로 timerOn 값이 true가 되면, `worker.postMessage()`로 worker에 메세지 데이터를 전달합니다.
+
+   - 여기서 메세지 데이터는 사용하지 않으므로 중요하지 않습니다.<br></br>
+
+4. worker의 `self.onmessage`에 적힌 동작들이 실행됩니다. (setInterval 실행)<br></br>
+
+5. Timer.tsx에서 `worker.onmessage`로, worker에서 `self.postMessage()`로 보낸 time을 100ms마다 기존 time에 추가합니다.<br></br>
+
+---
+
 ### 참고 링크
 
-[코좀봐코 - React에서의 타이머 part 1 : setInterval 말고 이것!](https://www.youtube.com/watch?v=2tUdyY5uBSw)
+- [코좀봐코 - React에서의 타이머 part 1 : setInterval 말고 이것!](https://www.youtube.com/watch?v=2tUdyY5uBSw)
 
-[Making setInterval Declarative with React Hooks](https://overreacted.io/making-setinterval-declarative-with-react-hooks/)
+- [Making setInterval Declarative with React Hooks](https://overreacted.io/making-setinterval-declarative-with-react-hooks/)
 
-[setTimeout과 setInterval을 이용한 호출 스케줄링](https://ko.javascript.info/settimeout-setinterval)
+- [setTimeout과 setInterval을 이용한 호출 스케줄링](https://ko.javascript.info/settimeout-setinterval)
+
+- [Web Workers API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API)
+
+- [Using Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers)
+
+- [Web Worker 간단 정리하기](https://pks2974.medium.com/web-worker-%EA%B0%84%EB%8B%A8-%EC%A0%95%EB%A6%AC%ED%95%98%EA%B8%B0-4ec90055aa4d)
+
+- [Webpack - Web Workers](https://webpack.kr/guides/web-workers/)
+
+- [How to use WebWorkers in React using Typescript](https://stackoverflow.com/questions/60695105/how-to-use-webworkers-in-react-using-typescript)
+
+- [타입 표명(Type Assertion)](https://radlohead.gitbook.io/typescript-deep-dive/type-system/type-assertion)
