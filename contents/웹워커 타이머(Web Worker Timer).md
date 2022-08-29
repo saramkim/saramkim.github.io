@@ -1,9 +1,9 @@
 ---
 date: '2022-08-22'
-title: 'Web Worker Timer'
+title: '웹워커 타이머(Web Worker Timer)'
 categories: ['React', 'TS']
 summary: 'Web worker를 이용한 타이머 만들기'
-thumbnail: './WebWorkerTimer/20220821_230348.jpg'
+thumbnail: './WebWorkerTimer/20220825_233652.jpg'
 ---
 
 ### Timer 제작 과정
@@ -53,12 +53,15 @@ thumbnail: './WebWorkerTimer/20220821_230348.jpg'
 
 따라서 Web Worker에서 setInterval을 사용하면 브라우저 내 타이머 지연과 상관없이 정상 작동합니다.
 
-그러니 어서 사용합시다. (React & TypeScript 기준)
+그러니 어서 사용합시다.
 
 ---
 
+> ##### React & TypeScript
+
 ```json
 // tsconfig.json
+
 {
   "compilerOptions": {
     ...
@@ -70,6 +73,7 @@ thumbnail: './WebWorkerTimer/20220821_230348.jpg'
 
 ```js
 // worker.ts
+
 const self = globalThis as unknown as DedicatedWorkerGlobalScope; // Double assertion
 let time = 0;
 
@@ -79,12 +83,14 @@ self.onmessage = () => {
     self.postMessage(time);
   }, 100);
 };
+
 export {}; // --isolatedModules 에러 피하기 (모듈화)
 
 ```
 
 ```js
 // Timer.tsx
+
 function Timer() {
   const [time, setTime] = useState(0);
   const [timerOn, setTimerOn] = useState(false);
@@ -98,7 +104,7 @@ function Timer() {
   };
 
   useEffect(() => {
-    const worker = new Worker(new URL('./worker', import.meta.url)); // webpack5 이후 용법
+    const worker = new Worker(new URL('worker/worker', import.meta.url)); // webpack5 이후 용법
     if (timerOn === true) {
       worker.postMessage('timer start');
       worker.onmessage = (e: MessageEvent<string>) => {
