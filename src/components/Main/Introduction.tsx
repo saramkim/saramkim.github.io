@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useState } from 'react';
 import styled from '@emotion/styled';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 import ProfileImage from 'components/Main/ProfileImage';
@@ -65,20 +65,54 @@ const MoreInfo = styled.div`
   }
 `;
 
+const MailIcon = styled.div`
+  cursor: pointer;
+`;
+
+const ToastPopup = styled.div`
+  position: absolute;
+  left: -230px;
+  top: 0;
+  // color: black;
+  background: black;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 18px;
+  @media (max-width: 768px) {
+    left: -190px;
+    font-size: 15px;
+  }
+`;
+
 const Introduction: FunctionComponent<IntroductionProps> = function ({ profileImage }) {
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleMailClickEvent = () => {
+    navigator.clipboard.writeText('saramkimm@gmail.com').then(() => {
+      setIsClicked(true);
+      setTimeout(() => {
+        setIsClicked(false);
+      }, 1500);
+    });
+  };
+
   return (
     <Background>
       <Wrapper>
         <ProfileImage profileImage={profileImage} />
-
         <div>
           <SubTitle>개발하는 개발자</SubTitle>
           <Title>김사람</Title>
         </div>
         <MoreInfo>
-          <Link to={'https://github.com/saramkim'}>
-            <ImMail4 />
-          </Link>
+          {isClicked && (
+            <ToastPopup>
+              saramkimm@gmail.com<br></br>클립보드에 복사되었습니다
+            </ToastPopup>
+          )}
+          <MailIcon>
+            <ImMail4 onClick={handleMailClickEvent} />
+          </MailIcon>
           <Link to={'https://github.com/saramkim'}>
             <GoMarkGithub />
           </Link>
