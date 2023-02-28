@@ -5,7 +5,7 @@
 <p>자바스크립트는 언어인데, 왜 Single thread라고 하는 걸까?</p>
 </li>
 <li>
-<p>Web API, Promise와 같은 비동기 처리는 어느 thread에서 처리할까?</p>
+<p>Web API, Promise와 같은 비동기 작업은 어느 thread에서 처리할까?</p>
 </li>
 <li>
 <p>Event Loop가 Main thread에서 발생한다는데, Main thread는 어디에 있을까?</p>
@@ -22,8 +22,13 @@
 <p>Single thread?</p>
 </blockquote>
 <p>자바스크립트는 경량화를 위해 Single thread 환경에서 실행되도록 만들어진 언어입니다.</p>
-<p>따라서 자바스크립트 엔진(V8)은 Single thread로 동작합니다.</p>
-<p>자바스크립트 코드를 실행하는 Call stack이 하나라는 의미입니다.</p>
+<p>때문에 자바스크립트 엔진이 Single thread로 동작하는 것이고, 따라서 Call stack이 하나라는 의미가 되기도 합니다.</p>
+<blockquote>
+<p>Call stack?</p>
+</blockquote>
+<p>함수의 호출 상황을 기록하고 제어하는 메커니즘입니다.</p>
+<p>함수가 호출되면 해당 함수의 실행 컨텍스트가 Call stack에 추가된 후 함수가 처리됩니다.</p>
+<p>콜 스택은 자바스크립트 엔진에 포함되어 있습니다.</p>
 <blockquote>
 <p>자바스크립트 엔진?</p>
 </blockquote>
@@ -40,19 +45,19 @@
 <br>
 <p>Main thread는 브라우저 엔진의 렌더러 프로세스에 존재하며, 브라우저로 전송된 대부분의 코드를 처리합니다.</p>
 <p>HTML과 CSS를 파싱하고, 레이아웃 트리를 만드는 등 렌더링 작업의 대부분을 처리하고 지휘합니다.</p>
-<p>여기서 다룰 점은 Main thread는 자바스크립트 엔진과 별개의 thread이고, <strong>Event Loop를 담당</strong>한다는 것입니다.</p>
+<p>여기서 다룰 점은 Main thread는 자바스크립트 엔진과 별개의 thread이고, <strong>Event Loop를 담당</strong>한다는 점입니다.</p>
 <blockquote>
 <p>Event Loop?</p>
 </blockquote>
 <p>Event Loop는 비동기적인 코드의 실행을 관리하며, 이벤트 발생과 처리를 조율합니다.</p>
-<p>Call stack이 비었을 때, <strong>Task queue에 쌓인 태스크를 Call stack으로 넘겨 실행</strong>하는 역할을 합니다.</p>
+<p>콜 스택이 비었을 때, <strong>Task queue에 쌓인 태스크를 Call stack으로 넘겨 실행</strong>하는 역할을 합니다.</p>
 <p>Task queue가 비었을 때는 동작하지 않고, 태스크가 있을 때 반복 동작합니다.</p>
-<p>Call stack이 비었음을 확인하고, 태스크를 처리하는 과정을 반복하기에 Loop라고 합니다.</p>
+<p>콜 스택이 비었음을 확인하고, 태스크를 처리하는 과정을 반복하기에 Loop라고 합니다.</p>
 <blockquote>
 <p>Task queue?</p>
 </blockquote>
-<p>Task queue는 Event queue 혹은 Callback queue라고도 불리며, 보통 Macrotask queue를 가리킵니다.</p>
-<p>하지만 V8에 Microtask queue의 개념도 존재합니다.</p>
+<p>Task queue는 이벤트 큐 혹은 콜백 큐라고도 불리며, 보통 Macrotask queue를 가리킵니다.</p>
+<p>하지만 V8에는 Microtask queue의 개념도 존재합니다.</p>
 <br>
 <ul>
 <li>
@@ -68,7 +73,7 @@
 <hr>
 <h4>Event Loop Map</h4>
 <br>
-<p>스레드를 중심으로 Event Loop Map을 도식화하였습니다.</p>
+<p>Thread를 중심으로 Event Loop Map을 도식화하였습니다.</p>
 <p>크롬을 기준으로 하였고, Blink 로고가 존재하지 않아 Webkit 로고로 대체하였습니다.</p>
 <p>간소화한 것이라 생략된 개념이 존재합니다.</p>
 <p><span
@@ -117,13 +122,13 @@
     </span></p>
 <ol>
 <li>
-<p>콜 스택에 비동기 함수가 실행되면, 브라우저 엔진의 스레드로 넘어갑니다.</p>
+<p>비동기 함수가 호출되면 실행 컨텍스트가 콜 스택에 쌓이지 않고, 브라우저 엔진의 해당 스레드에 생성됩니다.</p>
 </li>
 <li>
-<p>해당하는 스레드에서 비동기적으로 처리한 후, 태스크 큐에 쌓입니다.</p>
+<p>해당 스레드에서 비동기 함수를 처리 후, 그 결과(태스크)가 태스크 큐에 쌓입니다.</p>
 </li>
 <li>
-<p>태스크 큐에 태스크가 존재하면, 이벤트 루프는 콜 스택이 비었는지 확인합니다.</p>
+<p>처리할 태스크가 있으니 메인 스레드에서 이벤트 루프를 통해 콜 스택이 비었는지 확인합니다.</p>
 </li>
 </ol>
 <p>4-1. 콜 스택이 비었다면, 이벤트 루프를 통해 큐에 쌓인 태스크를 콜 스택으로 넘깁니다.</p>
@@ -141,6 +146,9 @@
 </li>
 <li>
 <p>자바스크립트 엔진이 동작하는 동안 브라우저 엔진이 다른 태스크를 처리하기에 비동기적 처리가 가능하다.</p>
+<ul>
+<li>Node.js의 경우 libuv 라이브러리의 Thread pool에서 처리한다.</li>
+</ul>
 </li>
 <li>
 <p>브라우저 엔진이 처리한 태스크는 큐에 쌓이며, 이는 이벤트 루프를 통해 콜 스택으로 넘어가 실행된다.</p>
