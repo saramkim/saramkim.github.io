@@ -127,11 +127,8 @@
 
 <span class="token operator">&lt;</span>select
   onFocus<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>childElementCount <span class="token operator">></span> <span class="token number">7</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>size <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-      e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>size <span class="token operator">=</span> e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>childElementCount<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>childElementCount <span class="token operator">></span> <span class="token number">7</span><span class="token punctuation">)</span> e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>size <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span> e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>size <span class="token operator">=</span> e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>childElementCount<span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">}</span>
   onBlur<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>size <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
